@@ -1,6 +1,10 @@
 #!/bin/python
 import redis
+import datetime
 
 r = redis.Redis()
-r.mset({"Dylan": "McCaleb", "Emmet": "Waggle"})
+today = datetime.date.today()
+stoday = today.isoformat()
+visitors = {"Dylan", "Emmet", "Jeff"}
+r.mset(*visitors, stoday)
 print(r.get("Dylan"))
